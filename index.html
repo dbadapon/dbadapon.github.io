@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    <script src="test_project.js"></script>
+  </head>
+  <body>
+    <h1>Welcome to <i>UTAOU</i>!</h1>
+	<button id="butt">Let's go!</button>
+  <div>
+    <p id="song">Song:</p>
+  </div>
+  <div>
+    <button id="play"><i>Utaou!</i></button>
+  </div>
+  <label id="syllablesLabel" for="syllables">Syllable:</label>
+  <select name="syllables" id="syllables">
+    <option value="a">a</option>
+    <option value="i">i</option>
+    <option value="u">u</option>
+    <option value="e">e</option>
+    <option value="o">o</option>
+  </select>
+  <label id="notesLabel" for="notes">Note:</label>
+  <select name="notes" id="notes">
+    <option value="A">A</option>
+    <option value="A#/Bb">A#/Bb</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="C#/Db">C#/Db</option>
+    <option value="D">D</option>
+    <option value="D#/Eb">D#/Eb</option>
+    <option value="E">E</option>s
+    <option value="F">F</option>
+    <option value="F#/Gb">F#/Gb</option>
+    <option value="G">G</option>
+    <option value="G#/Ab">G#/Ab</option>
+  </select>
+  <label id="octavesLabel" for="octaves">Octave:</label>
+  <select name="octaves" id="octaves">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4" selected>4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+  </select>
+  <label id="durationLabel" for="duration">Duration:</label>
+  <select name="duration" id = "duration">
+    <option value="16th">16th</option>
+    <option value="8th">8th</option>
+    <option value="Quarter" selected>Quarter</option>
+    <option value="Half">Half</option>
+    <option value="Whole">Whole</option>
+  </select>
+  <div class ="slidecontainer">
+      <label id="vibratoLabel" for="vibrato">Vibrato:</label>
+      <input type="range" min="0" max="100" value="0" class="slider" id="vibrato">
+      <label id="vibValue">0</label>
+  </div>
+  <button id="preview">Preview</button>
+  <button id="add">Add</button>
+  </body>
+</html>
