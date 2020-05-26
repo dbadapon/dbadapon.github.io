@@ -29,9 +29,8 @@ async function setAudioBufferSource(filename, name) {
 
 function setAudioBufferSources() {
   // TODO: Finish editing voice samples and add them here
-  //https://raw.githubusercontent.com/myName/myRepo/master/vendor/assets/music/Tetris.mp3
-  setAudioBufferSource('https://raw.githubusercontent.com/dbadapon/dbadapon.github.io/master/audio/a-vow.wav', "a-vow");
-  //setAudioBufferSource('audio/i-vow.wav', "i-vow");
+  setAudioBufferSource('audio/a-vow.wav', "a-vow");
+  setAudioBufferSource('audio/i-vow.wav', "i-vow");
   setAudioBufferSource('audio/u-vow.wav', "u-vow");
 }
 
