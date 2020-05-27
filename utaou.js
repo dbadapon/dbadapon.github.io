@@ -11,7 +11,7 @@ function initialize_ac() {
   console.log("initialized!!");
 }
 
-async function setAudioBufferSource(filename, name) {
+async function setAudioBufferSource(filename, name, loopStart, loopEnd) {
   var request = new XMLHttpRequest();
   var bufferSource;
 
@@ -22,6 +22,8 @@ async function setAudioBufferSource(filename, name) {
     audioCtx.decodeAudioData(request.response, function(buffer) {
         buffers[name] = buffer;
         notes[name] = {};
+        notes[name].loopStart = loopStart;
+        notes[name].loopEnd = loopEnd;
     });
   }
   request.send();
@@ -29,11 +31,11 @@ async function setAudioBufferSource(filename, name) {
 
 function setAudioBufferSources() {
   // TODO: Finish editing voice samples and add them here
-  setAudioBufferSource('audio/a-vow.wav', "a-vow");
-  setAudioBufferSource('audio/i-vow.wav', "i-vow");
-  setAudioBufferSource('audio/u-vow.wav', "u-vow");
-  setAudioBufferSource('audio/e-vow.wav', "e-vow");
-  setAudioBufferSource('audio/o-vow.wav', "o-vow");
+  setAudioBufferSource('audio/a-vow.wav', "a-vow", 0, 3.311);
+//   setAudioBufferSource('audio/i-vow.wav', "i-vow");
+//   setAudioBufferSource('audio/u-vow.wav', "u-vow");
+//   setAudioBufferSource('audio/e-vow.wav', "e-vow");
+//   setAudioBufferSource('audio/o-vow.wav', "o-vow");
 }
 
 function wait(milliseconds) {
