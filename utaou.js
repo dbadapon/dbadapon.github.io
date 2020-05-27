@@ -11,7 +11,7 @@ function initialize_ac() {
   console.log("initialized!!");
 }
 
-async function setAudioBufferSource(filename, name, loopStart, loopEnd) {
+async function setAudioBufferSource(filename, name) {
   var request = new XMLHttpRequest();
   var bufferSource;
 
@@ -22,8 +22,6 @@ async function setAudioBufferSource(filename, name, loopStart, loopEnd) {
     audioCtx.decodeAudioData(request.response, function(buffer) {
         buffers[name] = buffer;
         notes[name] = {};
-        notes[name].loopStart = loopStart;
-        notes[name].loopEnd = loopEnd;
     });
   }
   request.send();
@@ -31,11 +29,13 @@ async function setAudioBufferSource(filename, name, loopStart, loopEnd) {
 
 function setAudioBufferSources() {
   // TODO: Finish editing voice samples and add them here
-  setAudioBufferSource('audio/a-vow.wav', "a-vow", 0, 3.311);
-//   setAudioBufferSource('audio/i-vow.wav', "i-vow");
-//   setAudioBufferSource('audio/u-vow.wav', "u-vow");
-//   setAudioBufferSource('audio/e-vow.wav', "e-vow");
-//   setAudioBufferSource('audio/o-vow.wav', "o-vow");
+  // NOTE: Instead of looping the vowel portion of the syllable, I extend the vowel myself in Audacity
+  //        So the vowel continues for longer than you would practically need it
+  setAudioBufferSource('audio/a-vow.wav', "a");
+  setAudioBufferSource('audio/i-vow.wav', "i");
+  setAudioBufferSource('audio/u-vow.wav', "u");
+  setAudioBufferSource('audio/e-vow.wav', "e");
+  setAudioBufferSource('audio/o-vow.wav', "o");
 }
 
 function wait(milliseconds) {
@@ -49,14 +49,11 @@ function wait(milliseconds) {
   }
 
 function playNote(note) {
-  buffer = buffers[note.vowName];
+  buffer = buffers[note.syllable];
   bufferSource = audioCtx.createBufferSource();
   bufferSource.buffer = buffer;
-  bufferSource.loopStart = notes[note.vowName].loopStart;
-  bufferSource.loopEnd = notes[note.vowName].loopEnd;
-  bufferSource.loop = true;
 
-  notes[note.vowName].buffer = bufferSource;
+  notes[note.syllable].buffer = bufferSource;
 
   const gain = audioCtx.createGain();
   gain.gain.value = gainValue;
@@ -72,20 +69,17 @@ function playNote(note) {
   bufferSource.detune.value = note.detune;
   bufferSource.start();
   modulator.start();
-
-  // TODO: fix note duration to account for attack duration
+  
   wait(note.duration);
-  notes[note.vowName].buffer.stop();
+  notes[note.syllable].buffer.stop();
 }
 
-function Note(preName, vowName, duration, detune, vibrato, syllable, noteName, durValue) {
-  this.preName = preName;
-  this.vowName = vowName;
+function Note(syllable, duration, detune, vibrato, noteName, durValue) {
+  this.syllable = syllable;
   this.duration = duration; // in milliseconds
   this.detune = detune;
   this.vibrato = vibrato;
 
-  this.syllable = syllable;
   this.noteName = noteName;
   this.durValue = durValue;
 }
@@ -136,7 +130,7 @@ function createNote() {
   let vibrato = vibSlider.value;
   console.log(vibrato);
 
-  return new Note(syllable+"-pre", syllable+"-vow", duration, detune, vibrato, syllable, note, durValue);
+  return new Note(syllable, duration, detune, vibrato, note, durValue);
 }
 
 function playSong() {
