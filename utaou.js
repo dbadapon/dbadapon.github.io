@@ -48,34 +48,12 @@ function wait(milliseconds) {
     }
   }
 
-function playAttack(preName, detune, vibrato) {
-  buffer = buffers[preName];
-  bufferSource = audioCtx.createBufferSource();
-  bufferSource.buffer = buffer;
-
-  notes[preName].buffer = bufferSource;
-
-  const gain = audioCtx.createGain();
-  gain.gain.value = gainValue;
-  bufferSource.connect(gain);
-  gain.connect(audioCtx.destination);
-  bufferSource.detune.value = detune;
-
-  bufferSource.start();
-  // TODO: fix "click" in between attack and vowel
-  wait(buffer.duration*1000);
-  notes[preName].buffer.stop();
-}
-
 function playNote(note) {
-  if (notes[note.preName] != null) {
-    playAttack(note.preName, note.detune, note.vibrato);
-  }
   buffer = buffers[note.vowName];
   bufferSource = audioCtx.createBufferSource();
   bufferSource.buffer = buffer;
-  bufferSource.loopStart = .32;
-  bufferSource.loopEnd = buffer.duration * .42;
+  bufferSource.loopStart = notes[note.vowName].loopStart;
+  bufferSource.loopEnd = notes[note.vowName].loopEnd;
   bufferSource.loop = true;
 
   notes[note.vowName].buffer = bufferSource;
