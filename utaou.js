@@ -41,6 +41,11 @@ function setAudioBufferSources() {
   setAudioBufferSource('audio/ku.wav', "ku");
   setAudioBufferSource('audio/ke.wav', "ke");
   setAudioBufferSource('audio/ko.wav', "ko");
+  setAudioBufferSource('audio/sa.wav', "sa");
+  setAudioBufferSource('audio/shi.wav', "shi");
+  setAudioBufferSource('audio/su.wav', "su");
+  setAudioBufferSource('audio/se.wav', "se");
+  setAudioBufferSource('audio/so.wav', "so");
 }
 
 function wait(milliseconds) {
