@@ -13,11 +13,60 @@
     <h1>Welcome to <i>UTAOU</i>!</h1>
 	<button id="butt">Let's go!</button>
   <div>
+    <button id="about">About</button>
+    <button id="hide_about">Hide About</button>
+    <button id="help">Help</button>
+    <button id="hide_help">Hide Help</button>
+    <button id="show_demo">Show Demo Song</button>
+    <button id="hide_demo">Hide Demo Song</button>
+  </div>
+  <div id="about_message">
+    <h2>About <i>UTAOU!</i></h2>
+    <p><i>UTAOU!</i> (Japanese, "let's sing!") is a project that allows you to compose a song note-by-note
+      (and syllable-by-syllable) for a virtual singer to sing. It is inspired by
+      VOCALOID and UTAU, which are Japanese software programs that have similar
+      functionality.</p>
+    <p><i>UTAOU!</i> uses Japanese syllables becuase they are much simpler than those in other languages such as English.</p>
+    <p><i>Project and voice samples created by Dominique Adapon.</i></p>
+    <hr>
+  </div>
+  <div id="help_message">
+    <h2>How to use <i>UTAOU!</i></i></h2>
+    <h3>Song Display</h3>
+    <p>Below this section is where your song will be displayed (after the label that
+      reads "Song:"). A song is a sequential series of notes. Of course,
+      the song is initally empty.</p>
+    <p>Each note in the song is represented as so:</p>
+    <p>[ syllable | note | value (duration) ]</p>
+    <p>To play the song, click the <b><i>UTAOU!</i></b> button.</p>
+
+    <h3>Creating, Adding, and Deleting a Note</h3>
+    <p>Below the song display is the note creator. There are four drop-down selectors
+      where you can specify the <b>Syllable, Note, Octave,</b> and <b>Duration</b> of the note
+      that you wish to add.</p>
+    <p>Below these drop-down selectors is a slider for controlling the intensity
+      of the <b>Vibrato</b> for this note. If the slider is at 0, there will be no vibrato.</p>
+    <p>To <b>preview</b> the note that you have configured, click the <b>[Preview]</b> button
+      to hear it.</p>
+    <p>To add this note to the song, click the <b>[Add]</b> button.</p>
+    <p>To <b>delete</b> the <i>most recent note</i> that you have added, click the <b>[Delete Previous]</b>
+      button.</p>
+    <p>To <b>clear</b> the <i>entire song</i>, click the <b>[Clear]</b> button.</p>
+    <p><b>***NOTE:</b> ADD, DELETE, AND CLEAR <i>CANNOT BE UNDONE.</i></p>
+    <hr>
+  </div>
+  <div>
+    <p id="demo_song">Song:</p>
+    <button id="play_demo">Play Demo Song</button>
+  </div>
+  <hr id="line1">
+  <div>
     <p id="song">Song:</p>
   </div>
   <div>
     <button id="play"><i>Utaou!</i></button>
   </div>
+  <hr id="line2">
   <label id="syllablesLabel" for="syllables">Syllable:</label>
   <select name="syllables" id="syllables">
     <option value="a">a</option>
@@ -25,16 +74,56 @@
     <option value="u">u</option>
     <option value="e">e</option>
     <option value="o">o</option>
+
     <option value="ka">ka</option>
     <option value="ki">ki</option>
     <option value="ku">ku</option>
     <option value="ke">ke</option>
     <option value="ko">ko</option>
+
     <option value="sa">sa</option>
     <option value="shi">shi</option>
     <option value="su">su</option>
     <option value="se">se</option>
     <option value="so">so</option>
+
+    <option value="ta">ta</option>
+    <option value="chi">chi</option>
+    <option value="tsu">tsu</option>
+    <option value="te">te</option>
+    <option value="to">to</option>
+
+    <option value ="n">n</option>
+    <option value="na">na</option>
+    <option value="ni">ni</option>
+    <option value="nu">nu</option>
+    <option value="ne">ne</option>
+    <option value="no">no</option>
+
+    <option value="ha">ha</option>
+    <option value="hi">hi</option>
+    <option value="hu">hu/fu</option>
+    <option value="he">he</option>
+    <option value="ho">ho</option>
+
+    <option value="ma">ma</option>
+    <option value="mi">mi</option>
+    <option value="mu">mu</option>
+    <option value="me">me</option>
+    <option value="mo">mo</option>
+
+    <option value="ya">ya</option>
+    <option value="yu">yu</option>
+    <option value="yo">yo</option>
+
+    <option value="ra">ra</option>
+    <option value="ri">ri</option>
+    <option value="ru">ru</option>
+    <option value="re">re</option>
+    <option value="ro">ro</option>
+
+    <option value="wa">wa</option>
+    <option value="wo">wo</option>
   </select>
   <label id="notesLabel" for="notes">Note:</label>
   <select name="notes" id="notes">
@@ -73,7 +162,13 @@
       <input type="range" min="0" max="100" value="0" class="slider" id="vibrato">
       <label id="vibValue">0</label>
   </div>
+  <p></p>
   <button id="preview">Preview</button>
   <button id="add">Add</button>
   </body>
+  <div>
+    <p></p>
+    <button id="delete">Delete Previous</button>
+    <button id="clear">Clear Song</button>
+  </div>
 </html>
